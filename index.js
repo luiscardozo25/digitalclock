@@ -5,7 +5,7 @@ function showTime() {
     let m = date.getMinutes();
     let s = date.getSeconds();
     let session = 'AM';
-    let dd = date.getDay();
+    let dd = date.getDate();
     let mm = date.getMonth();
     let yyyy = date.getFullYear();
 
@@ -44,7 +44,11 @@ function showTime() {
         mm = "0" + mm;
     } 
 
-    let time = h + ':' + m + ':' + s + " " + session + " " + "|" + " " + dd + "/" + mm + "/" + yyyy;
+    mm = date.toLocaleString('default', {
+        month: 'long',
+    });
+
+    let time = h + ':' + m + ':' + s + " " + session + " " + "|" + " " + mm + " " + dd + "," + " " + yyyy;
 
     $('#digitalclock').html(time);
     setTimeout(showTime, 1000);
